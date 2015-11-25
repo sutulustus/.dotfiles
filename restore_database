@@ -1,0 +1,33 @@
+#!/bin/bash
+if [ -n "$1" ]; then
+  echo -n "Database: ";
+  read DB;
+  echo -n "Password: ";
+  read -s PASSWORD;
+  
+  echo "logging in";
+
+  until mysql -u admin -p$PASSWORD -e ";" ; do
+    read -s -p "Can't connect, please retry: " PASSWORD;
+  done
+  
+  new_pass=$(md5 -qs *bdwhite1);
+  
+  echo "creating database";
+  mysql -u admin -p$PASSWORD -e "DROP DATABASE IF EXISTS $DB; CREATE DATABASE $DB";
+  
+  echo "importing database"
+  mysql -u admin -p$PASSWORD $DB < $1;                       
+  
+  echo "changing to dev settings"
+  mysql -u admin -p$PASSWORD $DB -e "UPDATE client SET email = CONCAT(firstname, '@example.com')";
+  mysql -u admin -p$PASSWORD $DB -e "UPDATE staff SET email = CONCAT(firstname, '@example.com')";
+  mysql -u admin -p$PASSWORD $DB -e "UPDATE adv_web_settings SET upload_server = 'dev'";
+  
+  echo "reseting password"
+  mysql -u admin -p$PASSWORD $DB -e "UPDATE user SET crypted_password = '$new_pass' WHERE username_pk = 'admin'";
+                                                           
+  echo "restored $DB";
+else
+  echo "dump_location invalid. usage: restore_database dump_location";
+fi
