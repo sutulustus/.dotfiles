@@ -10,6 +10,7 @@ alias pro='cd ~/Projects/railsapps/boom/pro'
 alias api='cd ~/Projects/railsapps/boom/api'
 alias crm='cd ~/Projects/railsapps/boom_crm'
 alias dscripts='cd ~/Projects/deploy_scripts'
+alias dot='cd ~/.dotfiles'
 
 # -------------------------------------------------------------------
 # directory information
@@ -31,13 +32,6 @@ alias 'filecount=find . -type f | wc -l' # number of files (not directories)
 alias ua='vi ~/.oh-my-zsh/custom/aliases.zsh' #update aliases file
 alias apache='sudo apachectl'
 alias rvhosts='sudo vi ~/.dotfiles/httpd-vhosts-rails.conf'
-
-
-# -------------------------------------------------------------------
-# mysql
-# -------------------------------------------------------------------
-alias mysql='/usr/local/mysql/bin/mysql'
-alias mysqladmin='/usr/local/mysql/bin/mysqladmin'
 
 # -------------------------------------------------------------------
 # Git
