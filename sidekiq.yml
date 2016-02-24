@@ -1,0 +1,3 @@
+# configuration file for Sidekiq
+:queues:
+  - SMS::Service#process_message!
