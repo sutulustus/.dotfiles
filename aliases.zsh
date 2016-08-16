@@ -69,3 +69,5 @@ alias gu="git shortlog | grep -E '^[^ ]'"
 
 
 alias 'rm=rm -i' # make rm command (potentially) less destructive
+
+alias php="/usr/local/Cellar/php56/5.6.24/bin/php"
