@@ -7,7 +7,7 @@ symlinks:
 - ~/.oh-my-zsh/custom/aliases.zsh@ -> .dotfiles/aliases.zsh
 - /private/etc/my.cnf@ -> .dotfiles/my.cnf
 - /private/etc/apache2/httpd.conf@ -> .dotfiles/httpd.conf
-- 
+
 
 
 changes:
