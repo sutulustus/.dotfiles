@@ -5,3 +5,4 @@ Gemfile.lock
 local_cluster_xenon.yml
 local_hosts.yml
 *.local
+**/public/boom
