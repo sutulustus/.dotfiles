@@ -7,3 +7,4 @@ local_hosts.yml
 *.local
 **/public/boom
 .htaccess
+class.cache.php

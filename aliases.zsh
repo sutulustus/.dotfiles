@@ -32,6 +32,8 @@ alias 'filecount=find . -type f | wc -l' # number of files (not directories)
 alias ua='vi ~/.oh-my-zsh/custom/aliases.zsh' #update aliases file
 alias apache='sudo apachectl'
 alias rvhosts='sudo vi ~/.dotfiles/httpd-vhosts-rails.conf'
+alias rdm='rails db:migrate'
+alias rdmt='rails db:migrate RAILS_ENV=test'
 
 # -------------------------------------------------------------------
 # Git
