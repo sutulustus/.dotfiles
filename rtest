@@ -1,6 +1,7 @@
 #!/bin/bash
 if [ -n "$1" ]; then
-  FILES=$(find test -name "*$1*test*");
+  IFS=$'\n'
+  FILES=($(find test -name "*$1*test*"));
 
 
   echo "Found ${#FILES[@]} files. Running tests.";
@@ -15,7 +16,7 @@ if [ -n "$1" ]; then
   printf '%s\n' "${FILES[@]}";
   echo "------------------";
  
-  rails test $FILES;
+  rails test "${FILES[@]}";
 else
   echo "What test should I run? Usage: rtest TEXT_REGEXP ";
 fi
