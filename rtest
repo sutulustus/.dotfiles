@@ -1,0 +1,21 @@
+#!/bin/bash
+if [ -n "$1" ]; then
+  FILES=$(find test -name "*$1*test*");
+
+
+  echo "Found ${#FILES[@]} files. Running tests.";
+  echo "------------------";
+
+  if [ -n "$2" ]; then
+    for i in ${!FILES[@]}; do
+      FILES[$i]="${FILES[$i]}:$2";
+    done
+  fi
+
+  printf '%s\n' "${FILES[@]}";
+  echo "------------------";
+ 
+  rails test $FILES;
+else
+  echo "What test should I run? Usage: rtest TEXT_REGEXP ";
+fi
