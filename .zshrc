@@ -89,4 +89,3 @@ export PATH="/usr/local/lib:$PATH"
 
 eval `keychain --eval --agents ssh --inherit any id_rsa`
 
-eval $(thefuck --alias)
