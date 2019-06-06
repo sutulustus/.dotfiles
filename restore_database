@@ -27,9 +27,9 @@ if [ -n "$1" ]; then
   mysql -u root -p$PASSWORD $DB -e "UPDATE office SET media_vendor_wsk = NULL, media_vendor_daa = NULL, media_vendor_agentid = NULL;";
   mysql -u root -p$PASSWORD $DB -e "UPDATE user SET media_vendor_username = '', media_vendor_password = '';";
   mysql -u root -p$PASSWORD $DB -e "UPDATE sales_listing SET media_vendor_uniqueid = NULL;";
-  mysql -u root -p$PASSWORD $DB -e "SET FOREIGN_KEY_CHECKS = 0; TRUNCATE TABLE emails; SET FOREIGN_KEY_CHECKS = 1;";
-  mysql -u root -p$PASSWORD $DB -e "SET FOREIGN_KEY_CHECKS = 0; TRUNCATE TABLE email_history; SET FOREIGN_KEY_CHECKS = 1;";
-  mysql -u root -p$PASSWORD $DB -e "SET FOREIGN_KEY_CHECKS = 0; TRUNCATE TABLE email_campaigns; SET FOREIGN_KEY_CHECKS = 1;";
+#  mysql -u root -p$PASSWORD $DB -e "SET FOREIGN_KEY_CHECKS = 0; TRUNCATE TABLE emails; SET FOREIGN_KEY_CHECKS = 1;";
+#  mysql -u root -p$PASSWORD $DB -e "SET FOREIGN_KEY_CHECKS = 0; TRUNCATE TABLE email_history; SET FOREIGN_KEY_CHECKS = 1;";
+#  mysql -u root -p$PASSWORD $DB -e "SET FOREIGN_KEY_CHECKS = 0; TRUNCATE TABLE email_campaigns; SET FOREIGN_KEY_CHECKS = 1;";
   mysql -u root -p$PASSWORD $DB -e "UPDATE adv_web_settings SET upload_server = 'dev'";
   
   echo "restored $DB";
