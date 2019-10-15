@@ -8,3 +8,6 @@ local_hosts.yml
 **/public/boom
 .htaccess
 class.cache.php
+**/public/images/localhost
+openload/
+index.php
