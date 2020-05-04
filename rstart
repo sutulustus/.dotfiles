@@ -1,0 +1,6 @@
+#!/bin/bash
+cd ~/Projects/railsapps/boom/pro;
+yarn install --check-files;
+bundle install;
+rails db:migrate;
+rails s;
