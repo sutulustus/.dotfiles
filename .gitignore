@@ -10,5 +10,5 @@ local_hosts.yml
 class.cache.php
 **/public/images/localhost
 openload/
-index.php
 .vscode/
+sites-enabled/
