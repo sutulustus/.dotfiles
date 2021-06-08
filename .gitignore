@@ -12,3 +12,4 @@ class.cache.php
 openload/
 .vscode/
 sites-enabled/
+unicorn.rb
