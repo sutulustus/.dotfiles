@@ -89,3 +89,5 @@ export PATH="/usr/local/lib:$PATH"
 
 eval `keychain --eval --agents ssh --inherit any id_rsa`
 
+export FZF_DEFAULT_COMMAND="find -L . ! -path '*node_modules/*' ! -path '*tmp/*' ! -path '*public/packs/*' ! -path '*public/devbox/*' ! -path '*public/localhost/*' ! -path '*public/private/*' ! -path '*bundle/*' ! -path '*log/*'"
+export FZF_DEFAULT_OPTS='--height 30% --border'
