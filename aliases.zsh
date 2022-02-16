@@ -11,6 +11,7 @@ alias api='cd ~/Projects/railsapps/boom/api'
 alias crm='cd ~/Projects/railsapps/boom_crm'
 alias hub='cd ~/Projects/railsapps/boom_hub'
 alias dscripts='cd ~/Projects/deploy_scripts'
+alias dfiles='cd ~/Projects/dockerfiles'
 alias dot='cd ~/.dotfiles'
 
 # -------------------------------------------------------------------
