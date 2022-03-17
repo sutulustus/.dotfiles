@@ -1,0 +1,16 @@
+#!/bin/sh
+if [ -z "$1" ]
+  then
+    echo "No argument supplied"
+    exit 1	
+fi
+
+CONFIG=$(ack $1 ~/Projects/deploy_scripts/config -l1)
+
+if [ -z "$CONFIG" ]
+  then
+    echo "Nothing found"
+else 
+    printf $1
+    cat $CONFIG | grep ${2:-db} -m1
+fi
