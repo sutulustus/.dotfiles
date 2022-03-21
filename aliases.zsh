@@ -38,6 +38,9 @@ alias res='(cd ~/Projects/dockerfiles && docker compose exec pro-web rake es:rei
 alias rdm='(cd ~/Projects/dockerfiles && docker compose exec pro-web rake db:migrate)'
 alias rdmt='(cd ~/Projects/dockerfiles && docker compose exec pro-web rake db:migrate RAILS_ENV=test)'
 alias dprolog='(cd ~/Projects/dockerfiles && docker compose exec pro-web tail -f log/development.log)'
+alias dprorestart='(cd ~/Projects/dockerfiles && docker compose restart pro-web)'
+alias dproyarn='(cd ~/Projects/dockerfiles && docker compose exec pro-web yarn install --check-files)'
+alias dprobundle='(cd ~/Projects/dockerfiles && docker compose exec pro-web bundle install)'
 
 # -------------------------------------------------------------------
 # Git
