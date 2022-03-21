@@ -37,6 +37,7 @@ alias ua='vi ~/.oh-my-zsh/custom/aliases.zsh' #update aliases file
 alias res='(cd ~/Projects/dockerfiles && docker compose exec pro-web rake es:reindex)'
 alias rdm='(cd ~/Projects/dockerfiles && docker compose exec pro-web rake db:migrate)'
 alias rdmt='(cd ~/Projects/dockerfiles && docker compose exec pro-web rake db:migrate RAILS_ENV=test)'
+alias dprolog='(cd ~/Projects/dockerfiles && docker compose exec pro-web tail -f log/development.log)'
 
 # -------------------------------------------------------------------
 # Git
