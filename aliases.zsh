@@ -42,6 +42,7 @@ alias dprorestart='(cd ~/Projects/dockerfiles && docker compose restart pro-web)
 alias dproconsole='(cd ~/Projects/dockerfiles && docker compose exec pro-web rails c)'
 alias dproroutes='(cd ~/Projects/dockerfiles && docker compose exec pro-web rake routes)'
 alias dprobash='(cd ~/Projects/dockerfiles && docker compose exec pro-web bash)'
+alias dprotest='(cd ~/Projects/dockerfiles && docker compose exec pro-web yarn test)'
 
 # -------------------------------------------------------------------
 # Git
@@ -80,3 +81,4 @@ alias gu="git shortlog | grep -E '^[^ ]'"
 
 alias 'rm=rm -i' # make rm command (potentially) less destructive
 alias 'pear=/usr/local/Cellar/php@5.6/5.6.40/bin/pear'
+alias sleep='pmset sleepnow'
