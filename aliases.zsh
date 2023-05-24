@@ -42,7 +42,9 @@ alias dprorestart='(cd ~/Projects/dockerfiles && docker compose restart pro-web)
 alias dproconsole='(cd ~/Projects/dockerfiles && docker compose exec pro-web rails c)'
 alias dproroutes='(cd ~/Projects/dockerfiles && docker compose exec pro-web rake routes)'
 alias dprobash='(cd ~/Projects/dockerfiles && docker compose exec pro-web bash)'
-alias dprotest='(cd ~/Projects/dockerfiles && docker compose exec pro-web yarn test)'
+alias dproytest='(cd ~/Projects/dockerfiles && docker compose exec pro-web yarn test)'
+alias dprotest='f() {(cd ~/Projects/dockerfiles && docker compose exec pro-web rails test "$1")};f'
+alias dpropid='(cd ~/Projects/dockerfiles && docker compose exec pro-mq rm /opt/app/pro/tmp/pids/server.pid)'
 
 # -------------------------------------------------------------------
 # Git
@@ -77,6 +79,7 @@ alias gsh="git shortlog | grep -E '^[ ]+\w+' | wc -l"
 
 # gu shows a list of all developers and the number of commits they've made
 alias gu="git shortlog | grep -E '^[^ ]'"
+alias mup="mutagen-compose up"
 
 
 alias 'rm=rm -i' # make rm command (potentially) less destructive
