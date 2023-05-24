@@ -2,28 +2,35 @@
 if [ -n "$1" ]; then
   echo -n "Database: ";
   read DB;
+  echo -n "Password: ";
+  read -s PASSWORD;
+  
+  echo "logging in";
+
+  until mysql -u root -p$PASSWORD -e ";" ; do
+    read -s -p "Can't connect, please retry: " PASSWORD;
+  done
   
   echo "creating database";
-  mysql -u boxdice --protocol=tcp -e "DROP DATABASE IF EXISTS $DB; CREATE DATABASE $DB";
+  mysql -u root -p$PASSWORD -e "DROP DATABASE IF EXISTS $DB; CREATE DATABASE $DB";
   
   echo "importing database"
-  mysql -u boxdice --protocol=tcp $DB < $1;                       
+  mysql -u root -p$PASSWORD $DB < $1;                       
   
   echo "changing to dev settings"
-  mysql -u boxdice --protocol=tcp $DB -e "UPDATE client SET email = CONCAT('test+$DB+contact+', clientid_pk, '@boxdice.com.au') WHERE email IS NOT NULL AND email != '';";
-  mysql -u boxdice --protocol=tcp $DB -e "UPDATE client SET email2 = CONCAT('test+$DB+contact+', clientid_pk, '@boxdice.com.au') WHERE email2 IS NOT NULL AND email2 != '';";
-  mysql -u boxdice --protocol=tcp $DB -e "UPDATE staff SET email = CONCAT('test+$DB+consultant+', staffid_pk, '@boxdice.com.au') WHERE email IS NOT NULL AND email != '';";
-  mysql -u boxdice --protocol=tcp $DB -e "UPDATE office SET email = CONCAT('test+$DB+office+', officeid_pk, '@boxdice.com.au') WHERE email IS NOT NULL AND email != '';";
-  mysql -u boxdice --protocol=tcp $DB -e "UPDATE office SET sms_notification_email = CONCAT('test+$DB+office+', officeid_pk, '@boxdice.com.au') WHERE sms_notification_email IS NOT NULL AND sms_notification_email != '';";
-  mysql -u boxdice --protocol=tcp $DB -e "UPDATE system_settings  SET company_email = 'test+$DB+company@boxdice.com.au' WHERE company_email IS NOT NULL AND company_email != '';";
-  mysql -u boxdice --protocol=tcp $DB -e "UPDATE office SET media_vendor_wsk = NULL, media_vendor_daa = NULL, media_vendor_agentid = NULL;";
-  mysql -u boxdice --protocol=tcp $DB -e "UPDATE user SET media_vendor_username = '', media_vendor_password = '';";
-  mysql -u boxdice --protocol=tcp $DB -e "UPDATE sales_listing SET media_vendor_uniqueid = NULL;";
-  mysql -u boxdice --protocol=tcp $DB -e "UPDATE user SET crypted_password = md5('password') WHERE username_pk = 'admin';";
-#  mysql -u boxdice --protocol=tcp $DB -e "SET FOREIGN_KEY_CHECKS = 0; TRUNCATE TABLE emails; SET FOREIGN_KEY_CHECKS = 1;";
-#  mysql -u boxdice --protocol=tcp $DB -e "SET FOREIGN_KEY_CHECKS = 0; TRUNCATE TABLE email_history; SET FOREIGN_KEY_CHECKS = 1;";
-#  mysql -u boxdice --protocol=tcp $DB -e "SET FOREIGN_KEY_CHECKS = 0; TRUNCATE TABLE email_campaigns; SET FOREIGN_KEY_CHECKS = 1;";
-  mysql -u boxdice --protocol=tcp $DB -e "UPDATE adv_web_settings SET upload_server = 'dev'";
+  mysql -u root -p$PASSWORD $DB -e "UPDATE client SET email = CONCAT('test+$DB+contact+', clientid_pk, '@boxdice.com.au') WHERE email IS NOT NULL AND email != '';";
+  mysql -u root -p$PASSWORD $DB -e "UPDATE client SET email2 = CONCAT('test+$DB+contact+', clientid_pk, '@boxdice.com.au') WHERE email2 IS NOT NULL AND email2 != '';";
+  mysql -u root -p$PASSWORD $DB -e "UPDATE staff SET email = CONCAT('test+$DB+consultant+', staffid_pk, '@boxdice.com.au') WHERE email IS NOT NULL AND email != '';";
+  mysql -u root -p$PASSWORD $DB -e "UPDATE office SET email = CONCAT('test+$DB+office+', officeid_pk, '@boxdice.com.au') WHERE email IS NOT NULL AND email != '';";
+  mysql -u root -p$PASSWORD $DB -e "UPDATE office SET sms_notification_email = CONCAT('test+$DB+office+', officeid_pk, '@boxdice.com.au') WHERE sms_notification_email IS NOT NULL AND sms_notification_email != '';";
+  mysql -u root -p$PASSWORD $DB -e "UPDATE system_settings  SET company_email = 'test+$DB+company@boxdice.com.au' WHERE company_email IS NOT NULL AND company_email != '';";
+  mysql -u root -p$PASSWORD $DB -e "UPDATE office SET media_vendor_wsk = NULL, media_vendor_daa = NULL, media_vendor_agentid = NULL;";
+  mysql -u root -p$PASSWORD $DB -e "UPDATE user SET media_vendor_username = '', media_vendor_password = '';";
+  mysql -u root -p$PASSWORD $DB -e "UPDATE sales_listing SET media_vendor_uniqueid = NULL;";
+#  mysql -u root -p$PASSWORD $DB -e "SET FOREIGN_KEY_CHECKS = 0; TRUNCATE TABLE emails; SET FOREIGN_KEY_CHECKS = 1;";
+#  mysql -u root -p$PASSWORD $DB -e "SET FOREIGN_KEY_CHECKS = 0; TRUNCATE TABLE email_history; SET FOREIGN_KEY_CHECKS = 1;";
+#  mysql -u root -p$PASSWORD $DB -e "SET FOREIGN_KEY_CHECKS = 0; TRUNCATE TABLE email_campaigns; SET FOREIGN_KEY_CHECKS = 1;";
+  mysql -u root -p$PASSWORD $DB -e "UPDATE adv_web_settings SET upload_server = 'dev'";
   
   echo "restored $DB";
 else
