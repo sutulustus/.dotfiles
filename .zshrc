@@ -87,13 +87,22 @@ if [ -e "$HOME/.githubconfig" ]; then
   source "$HOME/.githubconfig"
 fi
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH="/usr/local/sbin:$PATH"
 export PATH="/usr/local/lib:$PATH"
-export PATH="$HOME/.rvm/gems/ruby-2.1.2/bin:$PATH"
-export PATH="$PATH:$HOME/.rvm/bin"
 
 eval `keychain --eval --agents ssh --inherit any id_rsa`
 
 export FZF_DEFAULT_COMMAND="find -L . ! -path '*node_modules/*' ! -path '*tmp/*' ! -path '*public/packs/*' ! -path '*public/devbox/*' ! -path '*public/localhost/*' ! -path '*public/private/*' ! -path '*bundle/*' ! -path '*log/*'"
 export FZF_DEFAULT_OPTS='--height 30% --border'
+export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES
+export DISABLE_SPRING=true
+
+export PATH="${HOME}/.pyenv/shims:${PATH}"
+export PATH="/usr/local/opt/node@14/bin:$PATH"
+export PATH="/usr/local/opt/openjdk/bin:$PATH"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+#export PATH="$HOME/.rvm/gems/ruby-2.1.2/bin:$PATH"
+export PATH="$HOME/.rvm/gems/ruby-3.2.1/bin:$PATH"
+export PATH="$PATH:$HOME/.rvm/bin"
+

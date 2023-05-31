@@ -32,11 +32,12 @@ alias 'filecount=find . -type f | wc -l' # number of files (not directories)
 # Usefull commands
 # -------------------------------------------------------------------
 alias ua='vi ~/.oh-my-zsh/custom/aliases.zsh' #update aliases file
-#alias rdm='rails db:migrate'
-#alias rdmt='rails db:migrate RAILS_ENV=test'
-alias res='(cd ~/Projects/dockerfiles && docker compose exec pro-web rake es:reindex)'
-alias rdm='(cd ~/Projects/dockerfiles && docker compose exec pro-web rake db:migrate)'
-alias rdmt='(cd ~/Projects/dockerfiles && docker compose exec pro-web rake db:migrate RAILS_ENV=test)'
+alias rdm='rails db:migrate'
+alias rdmt='rails db:migrate RAILS_ENV=test'
+alias res='rake es:reindex'
+#alias res='(cd ~/Projects/dockerfiles && docker compose exec pro-web rake es:reindex)'
+#alias rdm='(cd ~/Projects/dockerfiles && docker compose exec pro-web rake db:migrate)'
+#alias rdmt='(cd ~/Projects/dockerfiles && docker compose exec pro-web rake db:migrate RAILS_ENV=test)'
 alias dprolog='(cd ~/Projects/dockerfiles && docker compose exec pro-web tail -f log/development.log)'
 alias dprorestart='(cd ~/Projects/dockerfiles && docker compose restart pro-web)'
 alias dproconsole='(cd ~/Projects/dockerfiles && docker compose exec pro-web rails c)'
